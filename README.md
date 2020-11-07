@@ -1,6 +1,6 @@
-Some exercise to practice TDD with Java.
+<h1>Some exercise to practice TDD with Java.</h1>
 
-1) Bowling game
+<h2>1) Bowling game</h2>
 
     The game consists of 10 frames.  In each frame the player has
     two opportunities to knock down 10 pins.  The score for the frame is the total
