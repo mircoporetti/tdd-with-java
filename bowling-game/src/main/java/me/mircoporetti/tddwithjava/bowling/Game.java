@@ -28,6 +28,8 @@ public class Game {
             Frame frame = frames.get(i);
             if (frame.isASpare()){
                 score += frame.firstRoll + frame.secondRoll + frames.get(i + 1).firstRoll;
+            }else if (frame.isAStrike()){
+                score += frame.firstRoll + frames.get(i + 1).firstRoll + frames.get(i + 1).secondRoll;
             }else{
                 score += frame.firstRoll + frame.secondRoll;
             }

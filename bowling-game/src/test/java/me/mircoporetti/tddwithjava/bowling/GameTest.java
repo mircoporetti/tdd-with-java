@@ -58,4 +58,15 @@ class GameTest {
 
         assertThat(underTest.score(), is(20));
     }
+
+    @Test
+    void aStrike() {
+        underTest.roll(10);
+        underTest.roll(4);
+        underTest.roll(5);
+
+        rollMany(17, 0);
+
+        assertThat(underTest.score(), is(28));
+    }
 }
