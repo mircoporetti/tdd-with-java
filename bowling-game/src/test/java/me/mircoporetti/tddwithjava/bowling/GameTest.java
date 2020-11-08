@@ -48,5 +48,14 @@ class GameTest {
         assertThat(underTest.score(), is(20));
     }
 
+    @Test
+    void aSpare() {
+        underTest.roll(4);
+        underTest.roll(6);
+        underTest.roll(5);
 
+        rollMany(17, 0);
+
+        assertThat(underTest.score(), is(20));
+    }
 }
