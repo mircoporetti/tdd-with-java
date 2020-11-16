@@ -1,4 +1,4 @@
-package me.mircoporetti.tddwithjava.bowling;
+package me.mircoporetti.tddwithjava.bowling.game;
 
 public class Frame {
 

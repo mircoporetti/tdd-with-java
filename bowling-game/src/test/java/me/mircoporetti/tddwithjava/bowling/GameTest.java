@@ -1,10 +1,13 @@
 package me.mircoporetti.tddwithjava.bowling;
 
+import me.mircoporetti.tddwithjava.bowling.exception.TooManyGamesException;
+import me.mircoporetti.tddwithjava.bowling.game.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GameTest {
 
@@ -65,8 +68,17 @@ class GameTest {
         underTest.roll(4);
         underTest.roll(5);
 
-        rollMany(17, 0);
+        rollMany(16, 0);
 
         assertThat(underTest.score(), is(28));
+    }
+
+    @Test
+    void tooManyGames() {
+
+        rollMany(20,1);
+        assertThrows(TooManyGamesException.class, () -> {
+            underTest.roll(1);
+        });
     }
 }
