@@ -6,7 +6,6 @@ public class Frame {
     public int secondRoll;
     public boolean closed;
 
-
     public boolean isASpare() {
         return !isAStrike() && (firstRoll + secondRoll == 10);
     }

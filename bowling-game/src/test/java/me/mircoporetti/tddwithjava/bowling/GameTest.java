@@ -77,8 +77,51 @@ class GameTest {
     void tooManyGames() {
 
         rollMany(20,1);
-        assertThrows(TooManyGamesException.class, () -> {
-            underTest.roll(1);
-        });
+        assertThrows(TooManyGamesException.class, () -> underTest.roll(1));
     }
+
+    @Test
+    void noSpareOrStrikeInTheLastFrame() {
+        rollMany(18, 0);
+
+        underTest.roll(4);
+        underTest.roll(5);
+
+        assertThat(underTest.score(), is(9));
+    }
+
+    @Test
+    void spareInTheLastFrame() {
+        rollMany(18, 0);
+
+        underTest.roll(4);
+        underTest.roll(6);
+        underTest.roll(5);
+
+
+        assertThat(underTest.score(), is(15));
+    }
+
+    @Test
+    void strikeInTheLastFrame() {
+        rollMany(18, 0);
+
+        underTest.roll(10);
+        underTest.roll(5);
+        underTest.roll(5);
+
+        assertThat(underTest.score(), is(20));
+    }
+
+    @Test
+    void doubleStrikeInTheLastFrame() {
+        rollMany(18, 0);
+
+        underTest.roll(10);
+        underTest.roll(10);
+        underTest.roll(5);
+
+        assertThat(underTest.score(), is(25));
+    }
+
 }
