@@ -124,4 +124,10 @@ class GameTest {
         assertThat(underTest.score(), is(25));
     }
 
+    @Test
+    void perfectGame() {
+        rollMany(12, 10);
+
+        assertThat(underTest.score(), is(300));
+    }
 }

@@ -56,7 +56,12 @@ public class Game {
                 if (frame.isASpare()) {
                     score += frame.firstRoll + frame.secondRoll + frames.get(i + 1).firstRoll;
                 } else if (frame.isAStrike()) {
-                    score += frame.firstRoll + frames.get(i + 1).firstRoll + frames.get(i + 1).secondRoll;
+                    score += frame.firstRoll + frames.get(i + 1).firstRoll;
+                    if (frames.get(i + 1).firstRoll == 10 && !(frames.get(i + 1) instanceof LastFrame)){
+                        score += frames.get(i + 2).firstRoll;
+                    }else{
+                        score += frames.get(i + 1).secondRoll;
+                    }
                 } else {
                     score += frame.firstRoll + frame.secondRoll;
                 }
