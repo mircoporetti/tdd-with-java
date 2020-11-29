@@ -1,13 +1,17 @@
-package me.mircoporetti.tddwithjava.backtothecheckout;
+package me.mircoporetti.tddwithjava.backtothecheckout.checkcout;
 
+import me.mircoporetti.tddwithjava.backtothecheckout.checkout.Checkout;
+import me.mircoporetti.tddwithjava.backtothecheckout.checkout.PricePolicy;
+import me.mircoporetti.tddwithjava.backtothecheckout.checkout.PriceRuleBook;
+import me.mircoporetti.tddwithjava.backtothecheckout.exception.ProductNotInPriceListException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CheckoutTest {
 
@@ -32,11 +36,16 @@ class CheckoutTest {
     }
 
     @Test
-    void oneItemInTheCart() {
+    void singleProduct() {
         underTest.scan("A");
 
         int total = underTest.total();
 
         assertThat(total, is(50));
+    }
+
+    @Test
+    void productNotInPriceList() {
+        assertThrows(ProductNotInPriceListException.class, () -> underTest.scan("Z"));
     }
 }

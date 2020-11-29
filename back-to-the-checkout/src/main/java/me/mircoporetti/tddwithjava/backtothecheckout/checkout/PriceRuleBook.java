@@ -1,7 +1,6 @@
-package me.mircoporetti.tddwithjava.backtothecheckout;
+package me.mircoporetti.tddwithjava.backtothecheckout.checkout;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class PriceRuleBook {

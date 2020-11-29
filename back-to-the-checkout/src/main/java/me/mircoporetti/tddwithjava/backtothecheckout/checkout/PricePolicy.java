@@ -1,4 +1,4 @@
-package me.mircoporetti.tddwithjava.backtothecheckout;
+package me.mircoporetti.tddwithjava.backtothecheckout.checkout;
 
 public class PricePolicy {
     private final int unitPrice;
