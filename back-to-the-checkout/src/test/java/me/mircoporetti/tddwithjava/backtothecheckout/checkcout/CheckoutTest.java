@@ -95,4 +95,16 @@ class CheckoutTest {
 
         assertThat(total, is(175));
     }
+
+    @Test
+    void someWithSpecialPrice() {
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("B");
+
+        int total = underTest.total();
+
+        assertThat(total, is(160));
+    }
 }
