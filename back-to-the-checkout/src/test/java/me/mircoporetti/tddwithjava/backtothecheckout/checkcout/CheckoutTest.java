@@ -107,4 +107,40 @@ class CheckoutTest {
 
         assertThat(total, is(160));
     }
+
+    @Test
+    void twoForAProductWithoutSpecialPolicy() {
+        underTest.scan("D");
+        underTest.scan("D");
+
+        int total = underTest.total();
+
+        assertThat(total, is(100));
+    }
+
+    @Test
+    void doubleSpecialPriceForAProduct() {
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+
+        int total = underTest.total();
+
+        assertThat(total, is(260));
+    }
+
+    @Test
+    void aSpecialPriceAndARegularForAProduct() {
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+        underTest.scan("A");
+
+        int total = underTest.total();
+
+        assertThat(total, is(180));
+    }
 }
