@@ -1,20 +1,23 @@
 package me.mircoporetti.tddwithjava.backtothecheckout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Checkout {
 
     private final PriceRuleBook priceRuleBook;
-    private int total;
+    private List<String> cart = new ArrayList<>();
 
     public Checkout(PriceRuleBook priceRuleBook) {
         this.priceRuleBook = priceRuleBook;
     }
 
     public void scan(String product) {
-        PricePolicy pricePolicy = priceRuleBook.getRules().get("A");
-        total = pricePolicy.getUnitPrice();
+        cart.add(product);
     }
 
     public int total() {
-        return total;
+        PricePolicy pricePolicy = priceRuleBook.getRules().get(cart.get(0));
+        return pricePolicy.getUnitPrice();
     }
 }
