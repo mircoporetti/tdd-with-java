@@ -48,4 +48,17 @@ class CheckoutTest {
     void productNotInPriceList() {
         assertThrows(ProductNotInPriceListException.class, () -> underTest.scan("Z"));
     }
+
+    @Test
+    void oneForEachProduct() {
+        underTest.scan("A");
+        underTest.scan("B");
+        underTest.scan("C");
+        underTest.scan("D");
+
+        int total = underTest.total();
+
+        assertThat(total, is(150));
+    }
+
 }

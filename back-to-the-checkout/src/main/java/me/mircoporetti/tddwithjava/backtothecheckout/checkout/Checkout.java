@@ -4,6 +4,7 @@ import me.mircoporetti.tddwithjava.backtothecheckout.exception.ProductNotInPrice
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Checkout {
 
@@ -24,10 +25,18 @@ public class Checkout {
 
     public int total() {
         if(!cart.isEmpty()) {
-            PricePolicy pricePolicy = priceRuleBook.getRules().get(cart.get(0));
-            return pricePolicy.getUnitPrice();
+            AtomicInteger total = new AtomicInteger();
+            cart.forEach(p -> {
+                PricePolicy pricePolicy = getPricePolicyFor(p);
+                total.addAndGet(pricePolicy.getUnitPrice());
+            });
+            return total.get();
         }else{
             return 0;
         }
+    }
+
+    private PricePolicy getPricePolicyFor(String product) {
+        return priceRuleBook.getRules().get(product);
     }
 }
