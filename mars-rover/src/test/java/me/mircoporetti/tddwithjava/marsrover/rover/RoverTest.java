@@ -24,35 +24,63 @@ class RoverTest {
     }
 
     @Test
-    void moveForwardSingleCommand() {
-        underTest.execute("F");
+    void moveForward() {
+        underTest.executeSingle("F");
 
         assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,1)));
     }
 
     @Test
-    void moveBackwardSingleCommand() {
-        underTest.execute("B");
+    void moveBackward() {
+        underTest.executeSingle("B");
 
         assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,-1)));
     }
 
     @Test
-    void undefinedCommand() {
-        assertThrows(IllegalStateException.class, () -> underTest.execute("C"));
-    }
-
-    @Test
-    void turnLeftSingleCommand() {
-        underTest.execute("L");
+    void turnLeft() {
+        underTest.executeSingle("L");
 
         assertThat(underTest.getCoordinate().getDirection(), is(Direction.W));
     }
 
     @Test
-    void turnRightSingleCommand() {
-        underTest.execute("R");
+    void turnRight() {
+        underTest.executeSingle("R");
 
         assertThat(underTest.getCoordinate().getDirection(), is(Direction.E));
+    }
+
+    @Test
+    void undefinedCommand() {
+        assertThrows(IllegalStateException.class, () -> underTest.executeSingle("C"));
+    }
+
+    @Test
+    void turnAndMoveSingleTime() {
+        underTest.executeMultiple(new String[]{"L", "F"});
+
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(-1,0)));
+    }
+
+    @Test
+    void turnMultipleTimesAndMoveSingleTime() {
+        underTest.executeMultiple(new String[]{"R", "R", "B"});
+
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,1)));
+    }
+
+    @Test
+    void turnSingleTimeAndMoveMultipleTimes() {
+        underTest.executeMultiple(new String[]{"L", "B", "B"});
+
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(2,0)));
+    }
+
+    @Test
+    void turnAndMoveMultipleTimes() {
+        underTest.executeMultiple(new String[]{"F", "R", "F", "L", "L", "B"});
+
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(2,1)));
     }
 }

@@ -1,5 +1,7 @@
 package me.mircoporetti.tddwithjava.marsrover.rover;
 
+import java.util.Arrays;
+
 public class Rover {
 
     private Coordinate coordinate;
@@ -12,17 +14,26 @@ public class Rover {
         return coordinate;
     }
 
-    public void execute(String command) {
-        if(command.equals("F")) {
-            coordinate.moveForward();
-        }else if(command.equals("B")){
-            coordinate.moveBackward();
-        }else if(command.equals("L")){
-            coordinate.turnLeft();
-        }else if(command.equals("R")){
-            coordinate.turnRight();
-        }else{
-            throw new IllegalStateException("Unexpected value: " + command);
+    public void executeSingle(String command) {
+        switch (command) {
+            case "F":
+                coordinate.moveForward();
+                break;
+            case "B":
+                coordinate.moveBackward();
+                break;
+            case "L":
+                coordinate.turnLeft();
+                break;
+            case "R":
+                coordinate.turnRight();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + command);
         }
+    }
+
+    public void executeMultiple(String[] commands) {
+        Arrays.stream(commands).forEach(this::executeSingle);
     }
 }
