@@ -11,6 +11,7 @@
     <modules>
         <module>bowling-game</module>
         <module>back-to-the-checkout</module>
+        <module>mars-rover</module>
     </modules>
 
     <dependencies>
