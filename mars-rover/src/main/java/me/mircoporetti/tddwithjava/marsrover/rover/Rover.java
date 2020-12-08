@@ -1,7 +1,9 @@
 package me.mircoporetti.tddwithjava.marsrover.rover;
 
+import static me.mircoporetti.tddwithjava.marsrover.rover.Direction.*;
+
 public class Rover {
-    
+
     private Point point;
     private Direction direction;
 
@@ -20,15 +22,42 @@ public class Rover {
 
     public void execute(String command) {
 
-        switch (command){
-            case "F":
-                point = new Point(point.getX(),point.getY() + 1);
-                break;
-            case "B":
-                point = new Point(point.getX(), point.getY() - 1);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + command);
+        if(command.equals("F")) {
+            moveForward();
+        }else if(command.equals("B")){
+            moveBackward();
+        }else{
+            throw new IllegalStateException("Unexpected value: " + command);
         }
+    }
+
+    private void moveForward() {
+        int x = point.getX();
+        int y = point.getY();
+        if (direction.equals(N)) {
+            y += 1;
+        } else if (direction.equals(S)) {
+            y -= 1;
+        } else if (direction.equals(W)) {
+            x -= 1;
+        } else {
+            x += 1;
+        }
+        point = new Point(x, y);
+    }
+
+    private void moveBackward() {
+        int x = point.getX();
+        int y = point.getY();
+        if(direction.equals(N)){
+            y -= 1;
+        }else if(direction.equals(S)){
+            y += 1;
+        }else if(direction.equals(W)){
+            x += 1;
+        }else{
+            x -= 1;
+        }
+        point = new Point(x, y);
     }
 }

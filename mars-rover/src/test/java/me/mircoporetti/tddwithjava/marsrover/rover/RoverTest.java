@@ -24,14 +24,14 @@ class RoverTest {
     }
 
     @Test
-    void forwardSingleCommand() {
+    void moveForwardSingleCommand() {
         underTest.execute("F");
 
         assertThat(underTest.getPoint(), is(new Point(0,1)));
     }
 
     @Test
-    void behindSingleCommand() {
+    void moveBackwardSingleCommand() {
         underTest.execute("B");
 
         assertThat(underTest.getPoint(), is(new Point(0,-1)));
@@ -41,4 +41,5 @@ class RoverTest {
     void undefinedCommand() {
         assertThrows(IllegalStateException.class, () -> underTest.execute("C"));
     }
+
 }
