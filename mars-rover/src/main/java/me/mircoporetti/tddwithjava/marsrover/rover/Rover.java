@@ -28,6 +28,8 @@ public class Rover {
             moveBackward();
         }else if(command.equals("L")){
             turnLeft();
+        }else if(command.equals("R")){
+            turnRight();
         }else{
             throw new IllegalStateException("Unexpected value: " + command);
         }
@@ -72,6 +74,18 @@ public class Rover {
             direction = S;
         }else{
             direction = N;
+        }
+    }
+
+    private void turnRight() {
+        if(direction.equals(N)){
+            direction = E;
+        }else if(direction.equals(S)){
+            direction = W;
+        }else if(direction.equals(W)){
+            direction = N;
+        }else{
+            direction = S;
         }
     }
 }

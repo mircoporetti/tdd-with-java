@@ -48,4 +48,11 @@ class RoverTest {
 
         assertThat(underTest.getDirection(), is(Direction.W));
     }
+
+    @Test
+    void turnRightSingleCommand() {
+        underTest.execute("R");
+
+        assertThat(underTest.getDirection(), is(Direction.E));
+    }
 }
