@@ -1,91 +1,28 @@
 package me.mircoporetti.tddwithjava.marsrover.rover;
 
-import static me.mircoporetti.tddwithjava.marsrover.rover.Direction.*;
-
 public class Rover {
 
-    private Point point;
-    private Direction direction;
+    private Coordinate coordinate;
 
-    public Rover(Point point, Direction direction) {
-        this.point = point;
-        this.direction = direction;
+    public Rover(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 
-    public Point getPoint() {
-        return point;
-    }
-
-    public Direction getDirection() {
-        return direction;
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
     public void execute(String command) {
-
         if(command.equals("F")) {
-            moveForward();
+            coordinate.moveForward();
         }else if(command.equals("B")){
-            moveBackward();
+            coordinate.moveBackward();
         }else if(command.equals("L")){
-            turnLeft();
+            coordinate.turnLeft();
         }else if(command.equals("R")){
-            turnRight();
+            coordinate.turnRight();
         }else{
             throw new IllegalStateException("Unexpected value: " + command);
-        }
-    }
-
-    private void moveForward() {
-        int x = point.getX();
-        int y = point.getY();
-        if (direction.equals(N)) {
-            y += 1;
-        } else if (direction.equals(S)) {
-            y -= 1;
-        } else if (direction.equals(W)) {
-            x -= 1;
-        } else {
-            x += 1;
-        }
-        point = new Point(x, y);
-    }
-
-    private void moveBackward() {
-        int x = point.getX();
-        int y = point.getY();
-        if(direction.equals(N)){
-            y -= 1;
-        }else if(direction.equals(S)){
-            y += 1;
-        }else if(direction.equals(W)){
-            x += 1;
-        }else{
-            x -= 1;
-        }
-        point = new Point(x, y);
-    }
-
-    private void turnLeft() {
-        if(direction.equals(N)){
-            direction = W;
-        }else if(direction.equals(S)){
-            direction = E;
-        }else if(direction.equals(W)){
-            direction = S;
-        }else{
-            direction = N;
-        }
-    }
-
-    private void turnRight() {
-        if(direction.equals(N)){
-            direction = E;
-        }else if(direction.equals(S)){
-            direction = W;
-        }else if(direction.equals(W)){
-            direction = N;
-        }else{
-            direction = S;
         }
     }
 }

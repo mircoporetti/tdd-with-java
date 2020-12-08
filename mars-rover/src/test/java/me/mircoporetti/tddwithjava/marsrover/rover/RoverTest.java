@@ -14,27 +14,27 @@ class RoverTest {
     @BeforeEach
     void setUp() {
         Point point = new Point(0,0);
-        underTest = new Rover(point, Direction.N);
+        underTest = new Rover(new Coordinate(point, Direction.N));
     }
 
     @Test
     void constructionWithPointAndDirection() {
-        assertThat(underTest.getPoint(), is(new Point(0,0)));
-        assertThat(underTest.getDirection(), is(Direction.N));
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,0)));
+        assertThat(underTest.getCoordinate().getDirection(), is(Direction.N));
     }
 
     @Test
     void moveForwardSingleCommand() {
         underTest.execute("F");
 
-        assertThat(underTest.getPoint(), is(new Point(0,1)));
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,1)));
     }
 
     @Test
     void moveBackwardSingleCommand() {
         underTest.execute("B");
 
-        assertThat(underTest.getPoint(), is(new Point(0,-1)));
+        assertThat(underTest.getCoordinate().getPoint(), is(new Point(0,-1)));
     }
 
     @Test
@@ -46,13 +46,13 @@ class RoverTest {
     void turnLeftSingleCommand() {
         underTest.execute("L");
 
-        assertThat(underTest.getDirection(), is(Direction.W));
+        assertThat(underTest.getCoordinate().getDirection(), is(Direction.W));
     }
 
     @Test
     void turnRightSingleCommand() {
         underTest.execute("R");
 
-        assertThat(underTest.getDirection(), is(Direction.E));
+        assertThat(underTest.getCoordinate().getDirection(), is(Direction.E));
     }
 }
