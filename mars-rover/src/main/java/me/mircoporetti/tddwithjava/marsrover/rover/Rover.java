@@ -19,6 +19,16 @@ public class Rover {
     }
 
     public void execute(String command) {
-        point = new Point(0,1);
+
+        switch (command){
+            case "F":
+                point = new Point(point.getX(),point.getY() + 1);
+                break;
+            case "B":
+                point = new Point(point.getX(), point.getY() - 1);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + command);
+        }
     }
 }
