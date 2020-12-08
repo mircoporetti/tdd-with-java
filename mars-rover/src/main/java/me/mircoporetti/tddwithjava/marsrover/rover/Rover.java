@@ -26,6 +26,8 @@ public class Rover {
             moveForward();
         }else if(command.equals("B")){
             moveBackward();
+        }else if(command.equals("L")){
+            turnLeft();
         }else{
             throw new IllegalStateException("Unexpected value: " + command);
         }
@@ -59,5 +61,17 @@ public class Rover {
             x -= 1;
         }
         point = new Point(x, y);
+    }
+
+    private void turnLeft() {
+        if(direction.equals(N)){
+            direction = W;
+        }else if(direction.equals(S)){
+            direction = E;
+        }else if(direction.equals(W)){
+            direction = S;
+        }else{
+            direction = N;
+        }
     }
 }

@@ -42,4 +42,10 @@ class RoverTest {
         assertThrows(IllegalStateException.class, () -> underTest.execute("C"));
     }
 
+    @Test
+    void turnLeftSingleCommand() {
+        underTest.execute("L");
+
+        assertThat(underTest.getDirection(), is(Direction.W));
+    }
 }
