@@ -17,4 +17,8 @@ public class Rover {
     public Direction getDirection() {
         return direction;
     }
+
+    public void execute(String command) {
+        point = new Point(0,1);
+    }
 }

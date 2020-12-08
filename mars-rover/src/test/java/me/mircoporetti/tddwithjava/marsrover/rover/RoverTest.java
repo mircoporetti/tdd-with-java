@@ -21,4 +21,11 @@ class RoverTest {
         assertThat(underTest.getPoint(), is(new Point(0,0)));
         assertThat(underTest.getDirection(), is(Direction.N));
     }
+
+    @Test
+    void forwardCommand() {
+        underTest.execute("F");
+
+        assertThat(underTest.getPoint(), is(new Point(0,1)));
+    }
 }
