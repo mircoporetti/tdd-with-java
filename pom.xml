@@ -12,6 +12,7 @@
         <module>bowling-game</module>
         <module>back-to-the-checkout</module>
         <module>mars-rover</module>
+        <module>christmas-lights</module>
     </modules>
 
     <dependencies>
