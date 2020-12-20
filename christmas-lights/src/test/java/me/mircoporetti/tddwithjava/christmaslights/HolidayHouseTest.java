@@ -3,6 +3,8 @@ package me.mircoporetti.tddwithjava.christmaslights;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Stream;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -17,12 +19,10 @@ class HolidayHouseTest {
 
     @Test
     void everyLightOffOnStart() {
-        boolean[][] lights = underTest.getLights();
+        Light[][] lights = underTest.getLights();
 
-        for(int x = 0; x < 999; x++){
-            for(int y = 0; y < 999; y++){
-                assertThat(lights[x][y], is(false));
-            }
-        }
+        Stream.of(lights)
+                .flatMap(Stream::of)
+                .forEach(light -> assertThat(light.on, is(false)));
     }
 }
