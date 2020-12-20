@@ -16,7 +16,7 @@ public class HolidayHouse {
         return lights;
     }
 
-    public void turnOn(Coordinate firstCoordinate, Coordinate secondCoordinate) {
+    public void turnOnBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
         for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
             for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
                 lights[row][col].turnOn();
@@ -24,7 +24,7 @@ public class HolidayHouse {
         }
     }
 
-    public void turnOff(Coordinate firstCoordinate, Coordinate secondCoordinate) {
+    public void turnOffBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
         for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
             for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
                 lights[row][col].turnOff();
@@ -32,7 +32,7 @@ public class HolidayHouse {
         }
     }
 
-    public void toggle(Coordinate firstCoordinate, Coordinate secondCoordinate) {
+    public void toggleBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
         for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
             for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
                 lights[row][col].toggle();
