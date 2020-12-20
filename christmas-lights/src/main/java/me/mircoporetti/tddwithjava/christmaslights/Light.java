@@ -11,4 +11,16 @@ public class Light {
     public void turnOn() {
         on = true;
     }
+
+    public void turnOff() {
+        on = false;
+    }
+
+    public void toggle() {
+        if(on){
+            turnOff();
+        }else{
+            turnOn();
+        }
+    }
 }
