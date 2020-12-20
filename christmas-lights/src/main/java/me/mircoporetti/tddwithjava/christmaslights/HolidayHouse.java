@@ -24,6 +24,14 @@ public class HolidayHouse {
         }
     }
 
+    public void turnOff(Coordinate firstCoordinate, Coordinate secondCoordinate) {
+        for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
+            for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
+                lights[row][col].turnOff();
+            }
+        }
+    }
+
     public void toggle(Coordinate firstCoordinate, Coordinate secondCoordinate) {
         for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
             for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
