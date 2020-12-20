@@ -15,4 +15,12 @@ public class HolidayHouse {
     public Light[][] getLights() {
         return lights;
     }
+
+    public void turnOn(Coordinate firstCoordinate, Coordinate secondCoordinate) {
+        for (int i = firstCoordinate.getX(); i < secondCoordinate.getX(); i++){
+            for (int j = firstCoordinate.getY(); j < secondCoordinate.getY(); j++){
+                lights[i][j].turnOn();
+            }
+        }
+    }
 }

@@ -23,6 +23,16 @@ class HolidayHouseTest {
 
         Stream.of(lights)
                 .flatMap(Stream::of)
-                .forEach(light -> assertThat(light.on, is(false)));
+                .forEach(light -> assertThat(light.isOn(), is(false)));
+    }
+
+    @Test
+    void turnOnEveryLight() {
+        underTest.turnOn(new Coordinate(0,0), new Coordinate(999,999));
+        Light[][] lights = underTest.getLights();
+
+        Stream.of(lights)
+                .flatMap(Stream::of)
+                .forEach(light -> assertThat(light.isOn(), is(true)));
     }
 }
