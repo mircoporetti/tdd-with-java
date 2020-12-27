@@ -36,4 +36,11 @@ class FizzBuzzTest {
 
         assertThat(result, Matchers.is("Buzz"));
     }
+
+    @Test
+    void numberIsDivisibleByThreeAndFive_fizzbuzz() {
+        String result = underTest.fizzBuzz(15);
+
+        assertThat(result, Matchers.is("FizzBuzz"));
+    }
 }
