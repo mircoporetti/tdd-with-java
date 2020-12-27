@@ -29,4 +29,10 @@ class FizzBuzzTest {
         assertThat(result, is("Fizz"));
     }
 
+    @Test
+    void buzz() {
+        String result = underTest.fizzBuzz(5);
+
+        assertThat(result, is("Buzz"));
+    }
 }
