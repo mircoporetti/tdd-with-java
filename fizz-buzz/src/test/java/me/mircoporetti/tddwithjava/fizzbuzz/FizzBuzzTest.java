@@ -29,4 +29,11 @@ class FizzBuzzTest {
 
         assertThat(result, Matchers.is("Fizz"));
     }
+
+    @Test
+    void numberIsDivisibleByFive_buzz() {
+        String result = underTest.fizzBuzz(5);
+
+        assertThat(result, Matchers.is("Buzz"));
+    }
 }
