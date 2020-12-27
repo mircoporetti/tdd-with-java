@@ -12,10 +12,6 @@ public class FizzBuzz {
             result += "Buzz";
         }
 
-        if(result.isEmpty()){
-            return String.valueOf(number);
-        }else{
-            return result;
-        }
+        return !result.isEmpty() ? result : String.valueOf(number);
     }
 }
