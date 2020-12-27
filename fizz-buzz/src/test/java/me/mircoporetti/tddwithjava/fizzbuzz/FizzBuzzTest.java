@@ -21,4 +21,12 @@ class FizzBuzzTest {
 
         assertThat(result, is(String.valueOf(1)));
     }
+
+    @Test
+    void fizz() {
+        String result = underTest.fizzBuzz(3);
+
+        assertThat(result, is("Fizz"));
+    }
+
 }
