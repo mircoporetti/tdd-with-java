@@ -19,18 +19,18 @@ public class HolidayHouse {
     }
 
     public void turnOnBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
-        eachLight(firstCoordinate, secondCoordinate, Light::turnOn);
+        executeForEachLight(firstCoordinate, secondCoordinate, Light::turnOn);
     }
 
     public void turnOffBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
-        eachLight(firstCoordinate, secondCoordinate, Light::turnOff);
+        executeForEachLight(firstCoordinate, secondCoordinate, Light::turnOff);
     }
 
     public void toggleBetween(Coordinate firstCoordinate, Coordinate secondCoordinate) {
-        eachLight(firstCoordinate, secondCoordinate, Light::toggle);
+        executeForEachLight(firstCoordinate, secondCoordinate, Light::toggle);
     }
 
-    public void eachLight(Coordinate firstCoordinate, Coordinate secondCoordinate, Consumer<Light> consumer){
+    public void executeForEachLight(Coordinate firstCoordinate, Coordinate secondCoordinate, Consumer<Light> consumer){
         for (int row = firstCoordinate.getX(); row <= secondCoordinate.getX(); row++){
             for (int col = firstCoordinate.getY(); col <= secondCoordinate.getY(); col++){
                 consumer.accept(lights[row][col]);
