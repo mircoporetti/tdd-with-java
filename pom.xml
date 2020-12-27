@@ -13,6 +13,7 @@
         <module>back-to-the-checkout</module>
         <module>mars-rover</module>
         <module>christmas-lights</module>
+        <module>fizz-buzz</module>
     </modules>
 
     <dependencies>
