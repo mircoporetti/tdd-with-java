@@ -35,4 +35,11 @@ class FizzBuzzTest {
 
         assertThat(result, is("Buzz"));
     }
+
+    @Test
+    void fizzBuzz() {
+        String result = underTest.fizzBuzz(15);
+
+        assertThat(result, is("FizzBuzz"));
+    }
 }
