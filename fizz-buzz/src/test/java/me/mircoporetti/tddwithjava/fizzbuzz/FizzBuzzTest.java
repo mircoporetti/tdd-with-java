@@ -22,4 +22,11 @@ class FizzBuzzTest {
 
         assertThat(result, Matchers.is("1"));
     }
+
+    @Test
+    void numberIsDivisibleByThree_fizz() {
+        String result = underTest.fizzBuzz(3);
+
+        assertThat(result, Matchers.is("Fizz"));
+    }
 }
