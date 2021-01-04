@@ -15,6 +15,7 @@
         <module>christmas-lights</module>
         <module>fizz-buzz</module>
         <module>permutations</module>
+        <module>ohce</module>
     </modules>
 
     <dependencies>
@@ -28,6 +29,12 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <version>2.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
